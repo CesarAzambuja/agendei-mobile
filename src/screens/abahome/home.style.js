@@ -5,17 +5,9 @@ export const styles = {
     container: {
         backgroundColor: COLORS.white,
         flex: 1,
-        paddingTop: 70,
-        paddingBottom: 70,
+        paddingBottom: 12,
         paddingLeft: 30,
         paddingRight: 30,
-    },
-    containerLogo: {
-        alignItems: "center"
-    },
-    logo: {
-        width: 100,
-        height: 23
     },
     text:{
         fontSize: FONT_SIZE.md,
