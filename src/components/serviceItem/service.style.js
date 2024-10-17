@@ -15,13 +15,11 @@ export const styles = {
         fontSize: FONT_SIZE.lg,
         color: COLORS.gray2,
         marginTop: 10,
-        marginBottom: 5
-        
+        marginBottom: 5  
     },
     price:  {
         fontSize: FONT_SIZE.md,
         color: COLORS.blue,
-        
     },
 
 }
