@@ -5,13 +5,27 @@ import { doctors_services } from './../../constants/data';
 import Service from "../../components/serviceItem/service";
 
 
-function Services (){
+function Services (props){
+
+    const id_doctor = props.route.params.id_doctor;
+    const name = props.route.params.name;
+    const specialty = props.route.params.specialty;
+    const iconDoctor = props.route.params.icon;
+
+    function ClickService(id_service) {
+        props.navigation.navigate("schedule", {
+            id_doctor,
+            id_service
+        })
+        
+    }
+
     return <View style={styles.container}>
         
         <View style={styles.banner}>
-            <Image source={icon.female}/>
-            <Text style={styles.name}>Nome</Text>
-            <Text style={styles.specialty}>Especialidade</Text>
+            <Image source={iconDoctor == 'M' ? icon.male : icon.female}/>
+            <Text style={styles.name}>{name}</Text>
+            <Text style={styles.specialty}>{specialty}</Text>
         </View>
 
         <FlatList data={doctors_services}
@@ -19,8 +33,11 @@ function Services (){
             showsVerticalScrollIndicator={false}
             renderItem={({item}) => {
                 return <Service
+                id_service={item.id_service}
                 description={item.description}
-                price={item.price}/>
+                price={item.price}
+                onPress={ClickService}
+                />
             }}
         />
     </View>

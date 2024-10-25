@@ -1,4 +1,4 @@
-import { NavigationContainer } from "@react-navigation/native"
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image, Text } from "react-native"
 import Home from "../abahome/home";
@@ -11,8 +11,7 @@ const Tab = createBottomTabNavigator();
 
 
 function Main (){
-    return <NavigationContainer>
-        <Tab.Navigator>
+    return<Tab.Navigator>
             <Tab.Screen name="Home" component={Home} options={{
                 headerTitle: () => {
                     return <Image source={icon.logo} style={{width: 125, height: 29, marginBottom: 10}}/>
@@ -43,7 +42,6 @@ function Main (){
                 }
             }}/>
         </Tab.Navigator>
-    </NavigationContainer>
 }
 
 export default Main

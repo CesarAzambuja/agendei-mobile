@@ -9,10 +9,16 @@ import Button from "../../components/button/button";
 LocaleConfig.locales["pt-br"] = ptBR;
 LocaleConfig.defaultLocale = "pt-br"
 
-function Schedule(){
+function Schedule(props){
 
+    const id_doctor = props.route.params.id_doctor;
+    const id_service = props.route.params.id_service;
     const [selectedDate, setSelectedDate] = useState(new Date().toISOString().slice(0, 10))
     const [selectedHour, setSelectedHous] = useState("")
+
+    function ClickBook(){
+        console.log(id_doctor, id_service, selectedDate, selectedHour);
+    }
 
     return <View style={styles.container}>
        <View>
@@ -41,7 +47,7 @@ function Schedule(){
        </View>
 
         <View style={styles.btn}>
-            <Button text="Confirmar Reserva"/>
+            <Button text="Confirmar Reserva" onPress={ClickBook}/>
         </View>
     </View>
 

@@ -10,8 +10,8 @@ export const styles = {
         backgroundColor: COLORS.blue,
         justifyContent: "center",
         alignItems: "center",
-        paddingTop: 100,
-        paddingBottom: 25
+        paddingTop: 20,
+        paddingBottom: 40
     },
     name:  {
         fontSize: FONT_SIZE.lg,
