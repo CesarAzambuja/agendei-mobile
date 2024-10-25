@@ -20,7 +20,7 @@ function Account(props) {
             })
 
             if(response.data){
-                console.log(response.data);
+                props.navigation.navigate("login")
             }
         } catch (error) {
             if(error.response?.data.error)

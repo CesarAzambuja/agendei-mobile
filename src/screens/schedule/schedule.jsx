@@ -1,10 +1,11 @@
-import { View, Text } from "react-native"
+import { View, Text, Alert } from "react-native"
 import { styles } from  "./schedule.style"
 import {Calendar, LocaleConfig} from 'react-native-calendars';
 import { ptBR } from '../../constants/calendar'
 import { useState } from "react";
 import { Picker } from "@react-native-picker/picker";
 import Button from "../../components/button/button";
+import api from "../../constants/api";
 
 LocaleConfig.locales["pt-br"] = ptBR;
 LocaleConfig.defaultLocale = "pt-br"
@@ -16,9 +17,28 @@ function Schedule(props){
     const [selectedDate, setSelectedDate] = useState(new Date().toISOString().slice(0, 10))
     const [selectedHour, setSelectedHous] = useState("")
 
-    function ClickBook(){
-        console.log(id_doctor, id_service, selectedDate, selectedHour);
+
+    async function ClickBooking(){
+        try {
+            const response = await api.post("/appointments", {
+                id_doctor, 
+                id_service, 
+                booking_date: selectedDate, 
+                booking_hour: selectedHour
+            })
+
+            if (response.data)
+                props.navigation.navigate("Calendar")
+               
+        
+        } catch (error) {
+            if(error.response?.data.error)
+                Alert.alert(error.response.data.error)
+            else
+                Alert.alert("Ocorreu um erro. Tente novamente mais tarde!")
+        }
     }
+
 
     return <View style={styles.container}>
        <View>
@@ -47,7 +67,7 @@ function Schedule(props){
        </View>
 
         <View style={styles.btn}>
-            <Button text="Confirmar Reserva" onPress={ClickBook}/>
+            <Button text="Confirmar Reserva" onPress={ClickBooking}/>
         </View>
     </View>
 

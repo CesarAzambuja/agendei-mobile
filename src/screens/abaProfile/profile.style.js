@@ -22,5 +22,12 @@ export const styles = {
         paddingLeft: 8,
         paddingTop: 15,
         paddingBottom: 15
+    },
+
+    itemButton:{
+        marginLeft: 50,
+        marginRight: 50,
+        marginTop: 50,
+
     }
 }

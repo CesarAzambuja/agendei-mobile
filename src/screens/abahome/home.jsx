@@ -1,9 +1,12 @@
-import { View, Text, Image, FlatList } from "react-native"
+import { View, Text, FlatList, Alert } from "react-native"
 import { styles } from '../abahome/home.style'
-import {doctors} from "../../constants/data"
 import Doctor from "../../components/doctor/doctor"
+import { useEffect, useState } from "react"
+import api from "../../constants/api"
 
 function Home (props){
+
+    const [doctors, setDoctors] = useState({})
 
     function ClickDoctor(id_doctor, name, specialty, icon){
         props.navigation.navigate("services", {
@@ -13,6 +16,27 @@ function Home (props){
             icon
         })
     }
+
+    async function LoadDoctors(){
+        try {
+            const response = await api.get(`/doctors`)
+
+            if(response.data){
+                setDoctors(response.data)
+            }
+        } catch (error) {
+            if(error.response?.data.error)
+                Alert.alert(error.response.data.error)
+            else
+                Alert.alert("Ocorreu um erro. Tente novamente mais tarde!")
+        }
+    }
+
+    useEffect(() => {
+        LoadDoctors()
+    },[])
+
+
 
     return <View style={styles.container}>
         

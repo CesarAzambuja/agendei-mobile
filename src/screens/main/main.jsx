@@ -13,6 +13,7 @@ const Tab = createBottomTabNavigator();
 function Main (){
     return<Tab.Navigator>
             <Tab.Screen name="Home" component={Home} options={{
+                unmountOnBlur: true,
                 headerTitle: () => {
                     return <Image source={icon.logo} style={{width: 125, height: 29, marginBottom: 10}}/>
                 },
@@ -22,7 +23,8 @@ function Main (){
                 }
             }}/>
 
-            <Tab.Screen name="Agendamento" component={Calendar} options={{
+            <Tab.Screen name="Calendar" component={Calendar} options={{
+                unmountOnBlur: true,
                 headerTitle: () => {
                     return <Image source={icon.logo} style={{width: 125, height: 29, marginBottom: 10 }}/>
                 },
@@ -32,7 +34,8 @@ function Main (){
                 }
             }}/>
 
-            <Tab.Screen name="Perfil" component={Profile} options={{
+            <Tab.Screen name="Perfile" component={Profile} options={{
+                unmountOnBlur: true,
                 headerTitle: () => {
                     return <Image source={icon.logo} style={{width: 125, height: 29, marginBottom: 10}}/>
                 },
